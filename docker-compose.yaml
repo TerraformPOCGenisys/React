@@ -1,0 +1,22 @@
+version: '3'
+
+services: 
+
+  frontend:
+    build: 
+      context: react
+    container_name: frontend
+    working_dir: /usr/src/app
+    networks: 
+      - node-network
+    volumes: 
+      - ./react:/usr/src/app
+      - /usr/src/app/node_modules
+    tty: true
+    ports: 
+      - "5173:5173"
+    command: npm run dev
+  
+networks: 
+  node-network:
+    driver: bridge    
