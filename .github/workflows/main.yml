@@ -1,0 +1,38 @@
+name: React / Node.js CI Build and Docker Publish to ECR
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as needed
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.14.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests (if applicable)
+        run: npm test  # Adjust this step according to your Node.js app's testing framework
+
+      - name: Docker Build and Publish to ECR
+        env:
+          AWS_REGION: your-aws-region
+          AWS_ACCOUNT_ID: your-aws-account-id
+          ECR_REPO: your-ecr-repository
+        run: |
+          sudo apt-get update && sudo apt-get install -y awscli
+
+          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+
+          docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:nodejs-latest .
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:nodejs-latest
