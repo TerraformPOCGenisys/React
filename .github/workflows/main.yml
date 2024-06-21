@@ -26,9 +26,9 @@ jobs:
 
       - name: Docker Build and Publish to ECR
         env:
-          AWS_REGION: your-aws-region
-          AWS_ACCOUNT_ID: your-aws-account-id
-          ECR_REPO: your-ecr-repository
+          AWS_REGION: ap-south-1
+          AWS_ACCOUNT_ID: 851725578916
+          ECR_REPO: pocregistry
         run: |
           sudo apt-get update && sudo apt-get install -y awscli
 
