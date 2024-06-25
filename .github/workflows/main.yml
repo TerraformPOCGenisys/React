@@ -39,5 +39,5 @@ jobs:
 
           aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 851725578916.dkr.ecr.ap-south-1.amazonaws.com
 
-          docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:nodejs-latest .
-          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:nodejs-latest
+          docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:React-latest .
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:React-latest
