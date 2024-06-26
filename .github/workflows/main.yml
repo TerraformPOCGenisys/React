@@ -1,4 +1,4 @@
-name: React / Node.js CI Build and Docker Publish to ECR
+name: React App CI Build and Docker Publish to ECR
 
 on:
   push:
