@@ -32,12 +32,12 @@ jobs:
       - name: Docker Build and Publish to ECR
         env:
           AWS_REGION: ap-south-1
-          AWS_ACCOUNT_ID: 851725578916
-          ECR_REPO: pocregistry
+          AWS_ACCOUNT_ID: 352730764496
+          ECR_REPO: frontend-app
         run: |
           sudo apt-get update && sudo apt-get install -y awscli
 
-          aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 851725578916.dkr.ecr.ap-south-1.amazonaws.com
+          aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com
 
-          docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:React-latest .
-          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:React-latest
+          docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:v1 .
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:v1
