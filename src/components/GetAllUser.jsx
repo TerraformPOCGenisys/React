@@ -7,7 +7,7 @@ const GetAllUser = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/all")
+      .get("http://backend-app.staging.cluster.local:3000/api/all")
       .then((response) => setAllUser(response.data))
       .catch((err) => {
         console.error(err);
