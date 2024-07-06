@@ -11,7 +11,7 @@ const PostUser = () => {
 
     const createUser = async () => {
       await axios
-      .post("http://backend-app.staging.cluster.local:3000/api/form", 
+      .post("https://backend-app.cmrinfo.in/api/form", 
       user,
       {
         headers: {
