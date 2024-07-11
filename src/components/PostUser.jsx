@@ -25,7 +25,7 @@ const PostUser = () => {
           email: '',
         })
         console.log(response)
-        return alert("User Created: " + `${JSON.stringify(response.data, null,4)}`);
+        return alert(`User Created: ${JSON.stringify(response.data, null,4)}`);
         })
       .catch((err) => {
         return alert(err);
