@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Home from "./components/Home";
 import PostUser from "./components/PostUser";
 import GetAllUser from "./components/GetAllUser";
+import LoginButton from './components/LoginButton';
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
         <Route path="get" element={<GetAllUser />} />
         </Route>
       </Routes>
+      <div>
+        <LoginButton />
+      </div>
     </BrowserRouter>
   );
 }
